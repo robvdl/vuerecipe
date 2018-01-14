@@ -3,6 +3,7 @@ var CopyWebpackPlugin = require("copy-webpack-plugin");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var AsyncAwaitPlugin = require("webpack-async-await");
 var ManifestPlugin = require("webpack-manifest-plugin");
+var UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 var PROD = process.env.NODE_ENV || "development";
 
 module.exports = {
@@ -96,16 +97,14 @@ module.exports = {
 
 if (PROD != "development") {
   module.exports.plugins.push(
-    new webpack.optimize.UglifyJsPlugin({
-      beautify: false,
-      mangle: {
-        screw_ie8: true,
-        keep_fnames: true
-      },
-      compress: {
-        screw_ie8: true
-      },
-      comments: false
+    new UglifyJsPlugin({
+      uglifyOptions: {
+        output: {
+          beautify: false,
+          comments: false,
+          ecma: 8
+        }
+      }
     })
   );
 }
