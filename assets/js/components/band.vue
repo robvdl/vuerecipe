@@ -31,14 +31,13 @@ export default {
   },
 
   methods: {
-    fetchData: function() {
-      fetch('/api/bands').then(response => {
-        response.json().then(data => {
-          this.bands = data;
-        });
-      }).catch(e => {
+    async fetchData() {
+      try {
+        const response = await fetch('/api/bands');
+        this.bands = await response.json();
+      } catch (e) {
         console.log(e);
-      })
+      }
     }
   }
 };

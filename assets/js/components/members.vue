@@ -35,19 +35,18 @@ export default {
   },
 
   methods: {
-    fetchData: function() {
+    fetchData() {
       let id = this.$route.params.id;
 
-      fetch(`/api/bands/${id}`).then(response => {
-        response.json().then(data => {
-          this.band = data;
-        })
+      // Don't use await on these fetch statements so both can run in parallel.
+      // If you use await here then it can't fetch the members until it has
+      // finished fetching the band first, we don't want that.
+      fetch(`/api/bands/${id}`).then(async response => {
+        this.band = await response.json();
       });
 
-      fetch(`/api/bands/${id}/members`).then(response => {
-        response.json().then(data => {
-          this.members = data;
-        })
+      fetch(`/api/bands/${id}/members`).then(async response => {
+        this.members = await response.json();
       });
     }
   }

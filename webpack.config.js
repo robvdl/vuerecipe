@@ -1,6 +1,7 @@
 var webpack = require("webpack");
 var CopyWebpackPlugin = require("copy-webpack-plugin");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var AsyncAwaitPlugin = require("webpack-async-await");
 var ManifestPlugin = require("webpack-manifest-plugin");
 var PROD = process.env.NODE_ENV || "development";
 
@@ -23,6 +24,7 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin("[name].[hash].css"),
+    new AsyncAwaitPlugin({}),
     new CopyWebpackPlugin(
       [
         {
@@ -51,11 +53,6 @@ module.exports = {
       {
         test: /\.vue/,
         loader: "vue-loader"
-      },
-      {
-        test: /\.jsx?$/,
-        loader: "babel-loader",
-        exclude: /node_modules/
       },
       {
         test: /\.scss$/,
