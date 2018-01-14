@@ -1,9 +1,10 @@
 package grifts
 
 import (
-	"github.com/gobuffalo/vuerecipe/models"
 	"github.com/markbates/grift/grift"
 	"github.com/pkg/errors"
+
+	"github.com/robvdl/vuerecipe/models"
 )
 
 var _ = grift.Namespace("db", func() {

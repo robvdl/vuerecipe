@@ -8,7 +8,6 @@ module.exports = {
   entry: {
     application: [
       "./assets/js/application.js",
-      "./node_modules/jquery-ujs/src/rails.js",
       "./assets/css/application.scss"
     ]
   },
@@ -23,10 +22,6 @@ module.exports = {
     path: `${__dirname}/public/assets`
   },
   plugins: [
-    new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery"
-    }),
     new ExtractTextPlugin("[name].[hash].css"),
     new CopyWebpackPlugin(
       [
@@ -80,15 +75,15 @@ module.exports = {
       },
       {
         test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
-        use: "url-loader?limit=10000&mimetype=application/font-woff"
+        use: "url-loader"
       },
       {
         test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
-        use: "url-loader?limit=10000&mimetype=application/font-woff"
+        use: "url-loader"
       },
       {
         test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-        use: "url-loader?limit=10000&mimetype=application/octet-stream"
+        use: "url-loader"
       },
       {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
@@ -96,11 +91,7 @@ module.exports = {
       },
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        use: "url-loader?limit=10000&mimetype=image/svg+xml"
-      },
-      {
-        test: require.resolve("jquery"),
-        use: "expose-loader?jQuery!expose-loader?$"
+        use: "url-loader"
       }
     ]
   }

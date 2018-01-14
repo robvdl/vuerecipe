@@ -38,14 +38,16 @@ export default {
     fetchData: function() {
       let id = this.$route.params.id;
 
-      let req = $.getJSON(`/api/bands/${id}`);
-      req.done(data => {
-        this.band = data;
+      fetch(`/api/bands/${id}`).then(response => {
+        response.json().then(data => {
+          this.band = data;
+        })
       });
 
-      req = $.getJSON(`/api/bands/${id}/members`);
-      req.done(data => {
-        this.members = data;
+      fetch(`/api/bands/${id}/members`).then(response => {
+        response.json().then(data => {
+          this.members = data;
+        })
       });
     }
   }

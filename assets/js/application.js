@@ -1,6 +1,3 @@
-require("expose-loader?$!expose-loader?jQuery!jquery");
-require("bootstrap-sass/assets/javascripts/bootstrap.js");
-
 import Vue from "vue";
 import VueRouter from "router";
 Vue.use(VueRouter);
@@ -19,5 +16,6 @@ const router = new VueRouter({
 });
 
 const app = new Vue({
+  el: '#app',
   router
-}).$mount("#app");
+});

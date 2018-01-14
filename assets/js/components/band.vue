@@ -32,10 +32,13 @@ export default {
 
   methods: {
     fetchData: function() {
-      let req = $.getJSON("/api/bands");
-      req.done(data => {
-        this.bands = data;
-      });
+      fetch('/api/bands').then(response => {
+        response.json().then(data => {
+          this.bands = data;
+        });
+      }).catch(e => {
+        console.log(e);
+      })
     }
   }
 };

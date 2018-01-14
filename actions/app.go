@@ -10,7 +10,8 @@ import (
 	"github.com/gobuffalo/buffalo/middleware/csrf"
 	"github.com/gobuffalo/buffalo/middleware/i18n"
 	"github.com/gobuffalo/packr"
-	"github.com/gobuffalo/vuerecipe/models"
+
+	"github.com/robvdl/vuerecipe/models"
 )
 
 // ENV is used to help switch settings based on where the

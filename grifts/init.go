@@ -2,7 +2,8 @@ package grifts
 
 import (
 	"github.com/gobuffalo/buffalo"
-	"github.com/gobuffalo/vuerecipe/actions"
+
+	"github.com/robvdl/vuerecipe/actions"
 )
 
 func init() {
